@@ -11,8 +11,10 @@ const CardList = ({ users }) => {
               key={i}
               id={users[i].id}
               name={users[i].first_name}
+              last_name={users[i].last_name}
               email={users[i].email}
               avatar={users[i].avatar}
+
               />
           );
         })

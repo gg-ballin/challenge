@@ -14,18 +14,23 @@ class App extends Component {
       searchfield: ''
     }
   }
+
   fetchData = (data) => {
     fetch(`${API_ENDPOINT}/users?page=${data}`)
       .then(response=> response.json())
       .then(result => {this.setState({users: result.data})});
   }
+
   componentDidMount() {
     this.fetchData()  
   }
 
   onSearchChange = (event) => {
-    //this.setState({ searchfield: event.target.value })
-    this.fetchData(event.target.value);
+    if(event.target.value > 4) {
+      alert('nope');
+    } else {
+      this.fetchData(event.target.value);
+    }
   }
 
   render() {
@@ -37,7 +42,7 @@ class App extends Component {
       })
     }
     
-    return !users.length ?
+    return !users.length  ?
       <h1>Loading</h1> :
       (
         <div className='tc'>
